@@ -1,6 +1,8 @@
-import { NavItem } from "@/src/navigations/main-nav/types/NavItem";
-import Link from "next/link";
+"use client";
 
+import { NavItem } from "@/src/navigations/main-nav/types/NavItem";
+// import Link from "next/link";
+import { Link, Button } from "@mui/material";
 function MainNavUI( { items } : { items: NavItem[] }) {
 
     const renderItems = (items: NavItem[]): React.ReactNode[]  => {
@@ -10,13 +12,26 @@ function MainNavUI( { items } : { items: NavItem[] }) {
             
             nodeItems.push((
                 <div className={'tw-w-28 tw-text-center tw-rounded-full'}>
-                    <Link href={item.url}> {item.label} </Link>
+                    <Button
+                        variant="text"
+                        color="primary"
+                    >
+                        <Link 
+                            href={item.url}
+                            underline="none"
+                            color="black"
+                        > 
+                            {item.label} 
+                        </Link>
+                    </Button>
                 </div>
             ))
         });
         return nodeItems
 
     }
+
+    
     return(
         <nav>
             <div className={'tw-fixed tw-w-screen'}>
@@ -26,7 +41,10 @@ function MainNavUI( { items } : { items: NavItem[] }) {
                             img
                         </div>
                     </figure>
-                    <div className={'tw-flex tw-align-center tw-justify-around tw-bg-white'}>
+                    <div className={[
+                        'tw-flex tw-align-center tw-justify-around tw-bg-white',
+                        'tw-p-4 tw-rounded-full tw-mt-4'
+                    ].join(' ')}>
                         { items &&  (
                             renderItems(items)
                         )}

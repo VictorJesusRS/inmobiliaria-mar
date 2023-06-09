@@ -1,7 +1,16 @@
+"use client";
 import './globals.css'
-import { Inter } from 'next/font/google'
+// import { Inter } from 'next/font/google'
+import { Lato } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import { lightTheme } from "./src/themes/lightTheme";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+
+// const inter = Inter({ subsets: ['latin'] })
+const lato = Lato({
+  weight: ['300', '400', '700'],
+  subsets: ['latin']
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ThemeProvider theme={lightTheme}>
+        <CssBaseline />
+          <body className={lato.className}>{children}</body>
+      </ThemeProvider>
     </html>
   )
 }

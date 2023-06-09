@@ -1,3 +1,9 @@
+export const metadata = {
+    title: 'Inicio',
+    description: `Secciones combinadas de búsqueda 
+    de propiedades y servicios ofrecidos`
+}
+
 export default  function Landing() {
     return(
         <div>
